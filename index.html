@@ -40,11 +40,30 @@
             //     infoWindow.open(map, marker);
             // });
 
-            addMarker({ lat: 33.9698, lng: -112.7302 });
-            addMarker({ lat: 45.8404, lng: -119.2895 });
-            addMarker({ lat: 14.7167, lng: -17.4677 });
-            addMarker({ lat: 55.7558, lng: 37.6173 });
-            addMarker({ lat: 24.8801, lng: 102.8329 });
+            addMarker({
+                coords: { lat: 33.9698, lng: -112.7302 },
+                iconImage: src = 'fourbyfour.png'
+            });
+            addMarker({
+                coords: { lat: 45.8404, lng: -119.2895 },
+                iconImage: src = 'bunker.png'
+            });
+            addMarker({
+                coords: { lat: 14.7167, lng: -17.4677 },
+                iconImage: src = 'borb.png'
+            });
+            addMarker({
+                coords: { lat: 55.7558, lng: 37.6173 },
+                iconImage: src = 'church.png'
+            });
+            addMarker({
+                coords: { lat: 24.8801, lng: 102.8329 },
+                iconImage: src = 'farmstand.png'
+            });
+            addMarker({
+                coords: { lat: 60.0628, lng: -128.7109 },
+                iconImage: src = 'motorbike.png'
+            });
 
 
 
@@ -52,11 +71,11 @@
 
             //Marker Function
 
-            function addMarker(coords) {
+            function addMarker(props) {
                 let marker = new google.maps.Marker({
                     map: map,
-                    position: coords,
-                    icon: src = 'fourbyfour.png'
+                    position: props.coords,
+                    icon: props.iconImage
                 });
             }
 
