@@ -40,11 +40,36 @@
             //     infoWindow.open(map, marker);
             // });
 
-            addMarker({ lat: 33.9698, lng: -112.7302 });
-            addMarker({ lat: 45.8404, lng: -119.2895 });
-            addMarker({ lat: 14.7167, lng: -17.4677 });
-            addMarker({ lat: 55.7558, lng: 37.6173 });
-            addMarker({ lat: 24.8801, lng: 102.8329 });
+            addMarker({
+                coords: { lat: 33.9698, lng: -112.7302 },
+                iconImage: src = 'fourbyfour.png',
+                content: '<h1>Worked in Wickenburg</h1>'
+            });
+            addMarker({
+                coords: { lat: 45.8404, lng: -119.2895 },
+                iconImage: src = 'bunker.png',
+                content: '<h1>Hunkered in Oregon</h1>'
+            });
+            addMarker({
+                coords: { lat: 14.7167, lng: -17.4677 },
+                iconImage: src = 'borb.png',
+                content: '<h1>Wrestled in Dakar</h1>'
+            });
+            addMarker({
+                coords: { lat: 55.7558, lng: 37.6173 },
+                iconImage: src = 'church.png',
+                content: '<h1>Walked in Moscow</h1>'
+            });
+            addMarker({
+                coords: { lat: 24.8801, lng: 102.8329 },
+                iconImage: src = 'farmstand.png',
+                content: '<h1>Tea in China</h1>'
+            });
+            addMarker({
+                coords: { lat: 60.0628, lng: -128.7109 },
+                iconImage: src = 'motorbike.png',
+                content: '<h1>Rode to Alaska w/Clay</h1>'
+            });
 
 
 
@@ -52,12 +77,25 @@
 
             //Marker Function
 
-            function addMarker(coords) {
+            function addMarker(props) {
                 let marker = new google.maps.Marker({
                     map: map,
-                    position: coords,
-                    icon: src = 'fourbyfour.png'
+                    position: props.coords,
+                    icon: props.iconImage,
+                    content: props.content
                 });
+
+                if (props.content) {
+                    let infoWindow = new google.maps.InfoWindow({
+                        content: props.content
+                    });
+
+                    marker.addListener('click', function () {
+                        infoWindow.open(map, marker);
+                    });
+                }
+
+
             }
 
 
